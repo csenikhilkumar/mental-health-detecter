@@ -1,0 +1,25 @@
+{
+  "name": "@repo/database",
+  "version": "1.0.0",
+  "main": "./src/index.ts",
+  "types": "src/db.ts",
+
+  "exports": {
+    ".":"./src/db.ts",
+    "./db": "./src/db.ts"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@prisma/client": "6.12.0",
+    "prisma": "^6.12.0"
+  }
+}
