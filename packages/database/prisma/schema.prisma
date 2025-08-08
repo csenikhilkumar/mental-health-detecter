@@ -25,6 +25,7 @@ model Journal {
   id Int @default(autoincrement()) @id
   mood String
   entry String
+  suggestion String?
   userId String @db.Uuid
   createAt DateTime @default(now())
   user User @relation(fields: [userId],references: [id])

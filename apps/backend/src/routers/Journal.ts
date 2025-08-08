@@ -1,28 +1,33 @@
 import express, { Request, Response, Router } from "express"
 import AuthMiddleware from "../middleware/middleware"
 import prisma from "@repo/database"
+import { AnalyzeEntry } from "../ai_Integeration/analyzentry"
 const JournalRoute : Router= Router()
 
 
 
 JournalRoute.post("/Journal",AuthMiddleware,async function (req:Request,res:Response){
   try{
-    const {entry,mood} = req.body
-        if(!entry || !mood){
+    const {entry} = req.body
+        if(!entry){
             return res.json({
                 message : "all fields are required"
             })
         }
+        const ai = await AnalyzeEntry(entry);
         const createJournal = await prisma.journal.create({
             data:{
                 entry:entry,
-                mood:mood,
+                mood:ai.mood,
+                suggestion :ai.reply,
                 userId :(req as any).userId
             }
         })
             if(createJournal){
             return res.json({
-                message : "journal successfully created "
+                message : "journal successfully created ",
+                data:createJournal
+                
             })
         }
             else{
