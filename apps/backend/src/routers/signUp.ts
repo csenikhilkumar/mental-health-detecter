@@ -2,7 +2,6 @@ import { Request, Response, Router } from "express";
 import prisma from "@repo/database"
 import bcrypt from "bcrypt"
 import { userValid } from "@repo/common/zod"
-import jwt  from "jsonwebtoken";
 import env from "dotenv"
 env.config()
 const signUpRouter: Router = Router()
@@ -30,20 +29,21 @@ signUpRouter.post("/signUp", async function (req: Request, res: Response) {
                     message: "user allready exist"
                 })
             }
+            
             const createUser = await prisma.user.create({
                 data: {
                     username: username,
                     email: email,
                     password: hashedPassword
+                    
 
                 }
             })
             const id = createUser.id
             if (createUser) {
-                const token = await jwt.sign({id:id},process.env.JWT_SECRET!)
                 return res.json({
                     message: "user created ",
-                    token: token
+                   
                 })
 
             }

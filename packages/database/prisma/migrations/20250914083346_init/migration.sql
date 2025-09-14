@@ -13,6 +13,7 @@ CREATE TABLE "Journal" (
     "id" SERIAL NOT NULL,
     "mood" TEXT NOT NULL,
     "entry" TEXT NOT NULL,
+    "suggestion" TEXT,
     "userId" UUID NOT NULL,
     "createAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 

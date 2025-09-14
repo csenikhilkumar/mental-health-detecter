@@ -1,4 +1,5 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { prompt1 } from "./prompt";
 
 export interface AIAnalysis {
   mood: string;
@@ -27,13 +28,7 @@ export async function AnalyzeEntry(entry: string): Promise<AIAnalysis> {
     });
 
     // Create the prompt
-    const prompt = `You are a mental health assistant. Analyze the user's journal entry and respond in this exact format:
-
-Mood: [detected mood - one word like happy, sad, anxious, neutral, etc.]
-Confidence: [your confidence level from 0.0 to 1.0]
-Reply: [a supportive mental health tip or response]
-
-Journal entry to analyze:
+    const prompt = `${prompt1}Journal entry to analyze:
 "${entry}"
 
 Please provide your analysis in the exact format specified above.`;

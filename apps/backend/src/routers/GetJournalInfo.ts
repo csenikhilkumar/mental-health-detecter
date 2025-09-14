@@ -19,9 +19,8 @@ getinfoRouter.get("/Journal",AuthMiddleware,async function(req:Request,res:Respo
         if(findUserInfo){
             return res.json({
                 success : true,
-                data : [
-                    findUserInfo
-                ]
+                data : findUserInfo
+                
 
             })
         }

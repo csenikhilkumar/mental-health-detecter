@@ -25,8 +25,7 @@ JournalRoute.post("/Journal",AuthMiddleware,async function (req:Request,res:Resp
         })
             if(createJournal){
             return res.json({
-                message : "journal successfully created ",
-                data:createJournal
+                data:ai.reply
                 
             })
         }

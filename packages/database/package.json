@@ -3,16 +3,16 @@
   "version": "1.0.0",
   "main": "./src/index.ts",
   "types": "src/db.ts",
-
   "exports": {
-    ".":"./src/db.ts",
+    ".": "./src/db.ts",
     "./db": "./src/db.ts"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "@repo/typescript-config": "workspace:*"
+    "@repo/typescript-config": "workspace:*",
+    "@types/node": "^22.15.3"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +20,7 @@
   "description": "",
   "dependencies": {
     "@prisma/client": "6.12.0",
+    "dotenv": "^17.2.0",
     "prisma": "^6.12.0"
   }
 }

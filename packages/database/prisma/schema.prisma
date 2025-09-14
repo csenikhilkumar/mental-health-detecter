@@ -14,6 +14,8 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+
+
 model User{
   id String @id @default(uuid()) @db.Uuid
   username String @unique 
@@ -21,13 +23,13 @@ model User{
   password String
   journals Journal []
 }
-model Journal {
-  id Int @default(autoincrement()) @id
-  mood String
-  entry String
-  suggestion String?
-  userId String @db.Uuid
-  createAt DateTime @default(now())
-  user User @relation(fields: [userId],references: [id])
+  model Journal {
+    id Int @default(autoincrement()) @id
+    mood String
+    entry String
+    suggestion String?
+    userId String @db.Uuid
+    createAt DateTime @default(now())
+    user User @relation(fields: [userId],references: [id])
 
 }
